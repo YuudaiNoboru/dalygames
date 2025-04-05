@@ -11,3 +11,13 @@ export interface GameProps{
 export interface CardGameProps {
     data: GameProps
 }
+
+export interface LabelProps {
+    name: string;
+}
+
+export interface PropsParams {
+    params: {
+        id: string;
+    }
+}
