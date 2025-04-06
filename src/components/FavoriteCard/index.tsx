@@ -5,9 +5,15 @@ import { FiEdit, FiX } from "react-icons/fi"
 export function FavoriteCard() {
     const [input, setInput] = useState("")
     const [showInput, setShowIpunt] = useState(false)
+    const [gameName, setGameName] = useState("")
 
     function handleButton() {
         setShowIpunt(!showInput)
+
+        if (input !== "") {
+            setGameName(input)
+        }
+
         setInput("")
     }
 
@@ -17,13 +23,13 @@ export function FavoriteCard() {
             {showInput ? (
                 <div className="flex items-center justify-center gap-3">
                     <input
-                        className="w-full rounded-md h-8 text-black px-2 bg-white" 
-                        type="text" 
-                        value={input} 
+                        className="w-full rounded-md h-8 text-black px-2 bg-white"
+                        type="text"
+                        value={input}
                         onChange={(event) => setInput(event.target.value)}
                     />
                     <button onClick={handleButton}>
-                        <FiX size={24} color="#FFF"/>
+                        <FiX size={24} color="#FFF" />
                     </button>
                 </div>
             ) : (
@@ -33,7 +39,16 @@ export function FavoriteCard() {
 
             )}
 
-            <p className="font-bold text-white">Adicionar Jogo</p>
+            {gameName && (
+                <div>
+                    <span className="text-white">Jogo Favorito:</span>
+                    <p className="font-bold text-white">{gameName}</p>
+                </div>
+            )}
+
+            {!gameName && (
+                <p className="font-bold text-white">Adicionar Jogo</p>
+            )}
         </div>
     )
 }
